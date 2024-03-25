@@ -1,77 +1,188 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{url_for('static',filename = 'css/style.css')}}">
-  <title>Document</title>
-</head>
-<body>
-  
-<div class="container">
-  <form action="{{ url_for('predict')}}" method="post">
-    <div class="row">
-      <h4>Predictive analysis of Car Price</h4>
-      <div class="input-group input-group-icon">
-        <input name = "Year" id="first" type="number" placeholder="Year"/>
-        <div class="input-icon"><i class="fa fa-user"></i></div>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Rufina:400,700"
+      rel="stylesheet"
+    />
+    <title>Prisify</title>
+    <link
+      rel="shortcut icon"
+      type="image/icon"
+      href="{{url_for('static',filename = 'assets/logo/favicon.png')}}"
+    />
+
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/font-awesome.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static' ,filename='assets/css/linearicons.css')}}" />
+    <link rel="stylesheet" href=" {{ url_for('static',filename='assets/css/flaticon.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/animate.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/bootsnav.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/style.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/responsive.css')}}" />
+  </head>
+
+  <body>
+    <section id="home" class="welcome-hero">
+      <div class="top-area">
+        <div class="header-area">
+          <nav
+            class="navbar navbar-default bootsnav navbar-sticky navbar-scrollspy"
+            data-minus-value-desktop="70"
+            data-minus-value-mobile="55"
+            data-speed="1000"
+          >
+            <div class="container">
+              <div class="navbar-header">
+                <button
+                  type="button"
+                  class="navbar-toggle"
+                  data-toggle="collapse"
+                  data-target="#navbar-menu"
+                >
+                  <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html"
+                  >Prisify<span></span
+                ></a>
+              </div>
+              <div
+                class="collapse navbar-collapse menu-ui-design"
+                id="navbar-menu"
+              >
+                <ul
+                  class="nav navbar-nav navbar-right"
+                  data-in="fadeInDown"
+                  data-out="fadeOutUp"
+                >
+                  <li><a href="#home">home</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div class="clearfix"></div>
       </div>
-      <div class="input-group input-group-icon">
-        <input  id = "second" name= "Present_Price" required="required" placeholder="What is the Showroom Price?(In lakhs)"/>
-        <div class="input-icon"><i class="fa fa-envelope"></i></div>
+
+      <div class="container">
+        <div class="welcome-hero-txt">
+          <h2>Predict your car price</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <button class="welcome-btn">Welcome</button>
+        </div>
       </div>
-      <div class="input-group input-group-icon">
-        <input id="third" name="Kms_Driven" required="required" placeholder="How Many Kilometers Drived?">
-        <div class="input-icon"><i class="fa fa-key"></i></div>
-      </div>
-      <div class="input-group input-group-icon">
-        <input id="fourth" name="Owner" required="required" placeholder="How much owners previously had the car(0 or 1 or 3) ?">
-        <div class="input-icon"><i class="fa fa-key"></i></div>
-      </div>
-      <div class="input-group input-group-icon">
-        <h4>What Is the Fuel type?</h4>
-        <select name="Fuel_Type_Petrol" id="fuel" required="required">
+    </section>
+    <section>
+      <div class="form-container">
+        <div>
+          <h2>Predictive analysis of Car Price</h2>
+          <form action="{{url_for('predict')}}" method="post">
+            <div class="form-sub-container">
+              <div class="outer-div1">
+              <div class="inner-div">
+              <h3>Year</h3>
+              <input type="number" name="Year" class="form-control-number" placeholder="Year" min="1990" max="2024">
+            </div>
+            <div class="inner-div">
+              <h3>Showroom price? (In Lakhs)</h3>
+              <input type="number" name="Present_Price" class="form-control-number" placeholder="Showroom price">
+            </div>
+            </div>
+            <div class="outer-div2">
+              <div class="inner-div">
+              <h3>How Many Kilometers Drived?</h3>
+              <input type="number" name="Kms_Driven" class="form-control-number" placeholder="Showroom price">
+            </div>
+            <div class="inner-div">
+              <h3>How Many Owners Previously Had?</h3>
+              <input type="number" name="Owner" class="form-control-number" placeholder="Previous owners" min="0" max="3">
+            </div>
+            </div>
+            </div>
+            
+            <div class="select-container">
+              <div class="select-option">
+              <h3>What is the fuel type</h3>
+              <select name="Fuel_Type_Petrol" id="fuel" required class="form-control">
                 <option value="Petrol">Petrol</option>
                 <option value="Diesel">Diesel</option>
-                <option value="Diesel">CNG</option>
-        </select>
-        <div class="input-icon"><i class="fa fa-key"></i></div>
+                <option value="CNG">CNG</option>
+              </select>
+            </div>
+            <div class="select-option">
+              <h3>Are you A Dealer or Individual</h3>
+              <select name="Seller_Type_Individual" id="fuel" required class="form-control">
+                 <option value="Dealer">Dealer</option>
+                <option value="Individual">Individual</option>
+              </select>
+            </div>
+            <div class="select-option">
+              <h3>Transmission type</h3>
+              <select name="Fuel_Type_Petrol" id="fuel" required class="form-control">
+                <option value="Mannual">Manual Car</option>
+              <option value="Automatic">Automatic Car</option>
+              </select>
+            </div>
+            <div>
+              <button class="welcome-btn" style="margin-top: 0;">Calculate Price</button>
+            </div>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section>
+      <div class="price-section">
+        <p>🚗 Here's your car price 🚗</p>
+        <h3>Calculated Price : {{prediction_text}}</h3>
+      </div>
+    </section>
+
+    <footer id="contact" class="contact">
+      <div class="container">
+        <div class="footer-copyright">
+          <div>
+            <div>
+              <p class="copyright">&copy; Copyright. Developed by Aakash</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="input-group input-group-icon">
-        <h4>Are you A Dealer or Individual</h4>
-        <select name="Seller_Type_Individual" id="resea" required="required">
-          <option value="Dealer">Dealer</option>
-          <option value="Individual">Individual</option>
-        </select>
-        <div class="input-icon"><i class="fa fa-key"></i></div>
+      <div id="scroll-Top">
+        <div class="return-to-top">
+          <i
+            class="fa fa-angle-up"
+            id="scroll-top"
+            data-toggle="tooltip"
+            data-placement="top"
+            title=""
+            data-original-title="Back to Top"
+            aria-hidden="true"
+          ></i>
+        </div>
       </div>
+      <!--/.scroll-Top-->
+    </footer>
 
-      <div class="input-group input-group-icon">
-        <h4>Transmission type</h4>
-        <select name="Transmission_Mannual" id="research" required="required">
-          <option value="Mannual">Manual Car</option>
-          <option value="Automatic">Automatic Car</option>
-        </select>
-        <div class="input-icon"><i class="fa fa-key"></i></div>
-      </div>
-    </div>
-    <div class="row">
-      <h4>Terms and Conditions</h4>
-      <div class="input-group">
-        <input id="terms" type="checkbox"/>
-        <label for="terms">I accept the terms and conditions for this webapp up to this service, and hereby confirm I have read the privacy policy.</label>
-      </div>
-    </div>
-
-    <div class="button">
-      <button id="sub" type="submit ">Calculate the Selling Price</button>
-      <div class="input-icon"><i class="fa fa-key"></i></div>
-    </div>
-
-    <h3>{{ prediction_text }}<h3></h3>
-   
-  </form>
-</div>
-</body>
+    <script src="{{ url_for('static',filename='assets/js/jquery.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="{{ url_for('static',filename='assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='assets/js/bootsnav.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="{{ url_for('static',filename=assets/js/custom.js')}}"></script>
+  </body>
 </html>
